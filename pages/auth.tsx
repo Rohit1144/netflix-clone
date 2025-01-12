@@ -2,13 +2,11 @@ import Input from "@/components/Input";
 import { useCallback, useState } from "react";
 import axios from "axios";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/router";
 
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
 const Auth = () => {
-    const router = useRouter();
 
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -25,14 +23,13 @@ const Auth = () => {
                 email,
                 password,
                 redirect: false,
-                callbackUrl: '/'
+                callbackUrl: '/profiles'
             });
 
-            router.push('/')
         } catch (error) {
             console.log(error)
         }
-    }, [email, password, router]);
+    }, [email, password]);
 
 
     const register = useCallback( async () => {
@@ -86,10 +83,10 @@ const Auth = () => {
                         {variant === 'login' ? 'Login' : 'Sign up'}
                     </button>
                     <div className="flex flex-row items-center mt-8 gap-4 justify-center">
-                        <div onClick={() => signIn('google', {callbackUrl: '/'})} className="w-10 h-10 bg-white rounded-full justify-center flex cursor-pointer hover:opacity-80 transition items-center">
+                        <div onClick={() => signIn('google', {callbackUrl: '/profiles'})} className="w-10 h-10 bg-white rounded-full justify-center flex cursor-pointer hover:opacity-80 transition items-center">
                             <FcGoogle size={30}/>
                         </div>
-                        <div onClick={() => signIn('github', {callbackUrl: '/'})} className="w-10 h-10 bg-white rounded-full justify-center flex cursor-pointer hover:opacity-80 transition items-center">
+                        <div onClick={() => signIn('github', {callbackUrl: '/profiles'})} className="w-10 h-10 bg-white rounded-full justify-center flex cursor-pointer hover:opacity-80 transition items-center">
                             <FaGithub size={30}/>
                         </div>
                     </div>
