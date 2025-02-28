@@ -20,6 +20,7 @@ const MovieCard = ({data}: {data: Record<string, any>}) => {
         ' 
         src={data.thumbnailUrl} alt="thumbnail" />
         <div className='
+            group-hover:translate-x-[1vw]
             group-hover:-translate-y-[3vw]
             group-hover:opacity-100
             transition
