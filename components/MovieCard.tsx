@@ -20,7 +20,6 @@ const MovieCard = ({data}: {data: Record<string, any>}) => {
         ' 
         src={data.thumbnailUrl} alt="thumbnail" />
         <div className='
-            group-hover:translate-x-[2vw]
             group-hover:-translate-y-[3vw]
             group-hover:opacity-100
             transition
@@ -72,6 +71,10 @@ const MovieCard = ({data}: {data: Record<string, any>}) => {
                         cursor-pointer' onClick={() => {}}>
                          <IoPlaySharp size={17}/>
                     </div>
+                </div>
+
+                <div className='flex items-center gap-2 mt-4'>
+                    <p className='line-clamp-2 text-md lg:text-sm text-neutral-400'>{data.description}</p>
                 </div>
 
                 <div className='flex flex-row items-center gap-2 mt-3'>
