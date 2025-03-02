@@ -3,10 +3,12 @@ import MobileMenu from "./MobileMenu";
 import NavbarItem from "./NavbarItem";
 import { BsChevronDown, BsSearch, BsBell } from "react-icons/bs";
 import AccountMenu from "./AccountMenu";
+import useCurrentUser from "@/hooks/useCurrentUser";
 
 const TOP_OFFSET = 66;
 
 const Navbar = () => {
+    const {data: user} = useCurrentUser()
 
     const [showMobileMenu, setShowMobileMenu] = useState(false)
     const [showAccountMenu, setShowAccountMenu] = useState(false)
@@ -65,7 +67,7 @@ const Navbar = () => {
                             <img src="/images/Netflix-avatar.png" alt="avatar" />
                         </div>
                         <BsChevronDown className={`transition text-white ${showAccountMenu? `rotate-180`: `rotate-0`}`}/>
-                        <AccountMenu visible = {showAccountMenu}/>
+                        <AccountMenu visible = {showAccountMenu} user={user}/>
                     </div>
 
                 </div>

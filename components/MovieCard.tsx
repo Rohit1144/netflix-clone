@@ -1,6 +1,7 @@
 import React from 'react'
 import { IoPlaySharp } from "react-icons/io5";
 import { LuDot } from "react-icons/lu";
+import FavoriteButton from './FavoriteButton';
 
 const MovieCard = ({data}: {data: Record<string, any>}) => {
   return (
@@ -72,6 +73,7 @@ const MovieCard = ({data}: {data: Record<string, any>}) => {
                         cursor-pointer' onClick={() => {}}>
                          <IoPlaySharp size={17}/>
                     </div>
+                    <FavoriteButton movieId={data.id}/>
                 </div>
 
                 <div className='flex items-center gap-2 mt-4'>
