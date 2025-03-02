@@ -3,9 +3,10 @@ import { signOut } from "next-auth/react";
 
 interface AccountProps {
     visible?: boolean
+    user: any
 }
 
-const AccountMenu: React.FC<AccountProps> = ({visible}) => {
+const AccountMenu: React.FC<AccountProps> = ({visible, user}) => {
 
     if(!visible)
         return null;
@@ -17,7 +18,7 @@ const AccountMenu: React.FC<AccountProps> = ({visible}) => {
                 <div className="flex flex-row group/item gap-3 w-full items-center px-3">
                     <img className="w-8 rounded-md" src="/images/Netflix-avatar.png" alt="avatar" />
                     <p className="text-white text-sm group-hover/item:underline">
-                        Username
+                        {user?.name}
                     </p>
                 </div>
                 <hr className="border-0 bg-gray-600 h-px my-4"/>
