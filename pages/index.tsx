@@ -15,20 +15,31 @@ import { authOptions } from "./api/auth/[...nextauth]";
 
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const session = await getServerSession(context.req, context.res, authOptions);
+  try {
+    const session = await getServerSession(
+      context.req,
+      context.res,
+      authOptions
+    );
 
-  if (!session) {
+    if (session) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
+
     return {
-      redirect: {
-        destination: "/auth",
-        permanent: false,
-      },
+      props: {},
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      props: {},
     };
   }
-
-  return {
-    props: {},
-  };
 }
 
 
