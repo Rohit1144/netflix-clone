@@ -1,7 +1,6 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { compare } from "bcrypt";
-import { signIn } from "next-auth/react";
 import prismadb from '@/lib/prismadb';
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
