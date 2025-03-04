@@ -5,6 +5,30 @@ import { signIn } from "next-auth/react";
 
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { GetServerSidePropsContext } from "next";
+import { authOptions } from "./api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
+
+
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const session = await getServerSession(context.req, context.res, authOptions);
+  
+    if (session) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
+  
+    return {
+      props: {},
+    };
+  }
+
+
 
 const Auth = () => {
 
